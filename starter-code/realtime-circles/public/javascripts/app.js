@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function() {
   socket.on('add-circle', function (data) {
     addCircle(data);
   })
+  socket.on('clear', function () {
+    circles.innerHTML = '';
+  });
   console.log(socket);
 
   var circles = document.getElementById('circles');
@@ -20,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   document.getElementsByTagName('button')[0].addEventListener('click', function() {
-    circles.innerHTML = '';
+    socket.emit('clear');
   });
 
   do {
